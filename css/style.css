@@ -1,6 +1,6 @@
 body {
-  background: #2c2c2c;
-  color: #fff;
+  background: #edf1f5;
+  color: rgb(63, 66, 73);
   margin: 0px;
 }
 a {
@@ -12,31 +12,43 @@ a {
   display: block;
   clear: both;
 }
+* {
+  margin: 0px;
+  padding: 0px;
+}
+hr {
+  height: 0px;
+  border: none;
+  border-top: 1px solid rgb(187, 187, 187);
+}
 .topNavBar {
-    /* padding-top:36px;
-    padding-bottom:36px;
-    padding-left:16px;
-    padding-right:16px;  */
-    padding: 36px 16px 36px 16px;
-  }
+  padding: 36px 0px 36px 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.topNavBar-inner {
+  padding: 0px 16px;
+}
 .topNavBar nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.topNavBar > a {
+.topNavBar a {
   float: left;
 }
-.topNavBar > nav {b
+.topNavBar nav {
   float: right;
   padding-top: 1px;
 }
-.topNavBar > nav > ul > li {
+.topNavBar nav ul li {
   float: left;
   margin-left: 16px;
   margin-right: 16px;
 }
-.topNavBar > nav > ul > li > a {
+.topNavBar nav ul li a {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
   font-weight: bold;
@@ -47,7 +59,7 @@ a {
   padding-bottom: 10px;
   display: block;
 }
-.topNavBar > nav > ul > li > a:hover {
+.topNavBar nav ul li a:hover {
   border-bottom: 6px #ffffff solid;
 }
 
@@ -66,3 +78,105 @@ a {
   font-weight: 100;
   color: darkgrey;
 }
+.banner {
+  height: 500px;
+  background-image: url(../img/bg.jpeg);
+  background-position: center center;
+  background-size: cover;
+}
+.banner .mask {
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.userCard {
+  /* border: red 1px solid; */
+  border-radius: 20px;
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+}
+.userCard .welcome {
+  background: #3d3d3d;
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 16px;
+  line-height: 22px;
+  position: relative;
+  /* width:100px; */
+  /* height:30px; */
+}
+.userCard .welcome .triangle {
+  display: block;
+  border: 8px solid transparent;
+  width: 0px;
+  border-top-width: 0px;
+  border-bottom-width: 6px;
+  border-left-color: #3d3d3d;
+  position: absolute;
+  left: 10px;
+  top: 100%;
+}
+.userCard .picture {
+  float: left;
+  margin-right: 40px;
+}
+.userCard .text {
+  float: left;
+  width: 480px;
+}
+.userCard .content {
+  padding: 40px;
+}
+.userCard .text h1 {
+  margin-top: 20px;
+  width: 480px;
+}
+
+.userCard .text hr {
+  margin: 20px 0px;
+}
+
+.userCard dl dt,
+.userCard dl dd{
+  float: left;
+  padding:10px 0px;
+}
+.userCard dl dt{
+  width: 30%;
+  font-size: 12px;
+  font-weight: bold;
+}
+.userCard dl dd{
+  width: 60%;
+  color: rgb(150, 150, 150);
+  font-size: 12px;
+  /* border: 1px red solid; */
+}
+
+.userCard > footer.media{
+  background:rgb(85, 85, 85);
+  text-align: center;
+  border-radius: 0px 0px 20px 20px;
+
+}
+.userCard > footer.media > a{
+  /* border: 1px solid red; */
+  display: inline-block;
+  border-radius: 50%;
+  width: 60px;
+  line-height: 40px;
+  padding: 10px 0px;
+  margin:32px 16px;
+
+}
+.userCard svg{
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  /* margin:32px 16px; */
+  vertical-align: top;
+}
+.userCard > footer.media > a:hover{
+  background: aqua;
