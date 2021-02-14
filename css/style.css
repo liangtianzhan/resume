@@ -16,6 +16,26 @@ a {
   margin: 0px;
   padding: 0px;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3d3d3d;
+  text-align: center;
+  line-height: 32px;
+  margin: 32px;
+}
+ul,
+ol {
+  list-style: none;
+}
 hr {
   height: 0px;
   border: none;
@@ -91,11 +111,12 @@ hr {
 
 .userCard {
   /* border: red 1px solid; */
-  border-radius: 20px;
+  border-radius: 4px;
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
   background-color: #ffffff;
+  box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 .userCard .welcome {
   background: #3d3d3d;
@@ -139,45 +160,175 @@ hr {
 }
 
 .userCard dl dt,
-.userCard dl dd{
+.userCard dl dd {
   float: left;
-  padding:10px 0px;
+  padding: 10px 0px;
 }
-.userCard dl dt{
+.userCard dl dt {
   width: 30%;
   font-size: 12px;
   font-weight: bold;
 }
-.userCard dl dd{
+.userCard dl dd {
   width: 60%;
   color: rgb(150, 150, 150);
   font-size: 12px;
   /* border: 1px red solid; */
 }
 
-.userCard > footer.media{
-  background:rgb(85, 85, 85);
+.userCard > footer.media {
+  background: rgb(85, 85, 85);
   text-align: center;
-  border-radius: 0px 0px 20px 20px;
-
+  border-radius: 0px 0px 4px 4px;
 }
-.userCard > footer.media > a{
+.userCard > footer.media > a {
   /* border: 1px solid red; */
   display: inline-block;
   border-radius: 50%;
   width: 60px;
   line-height: 40px;
   padding: 10px 0px;
-  margin:32px 16px;
-
+  margin: 32px 16px;
 }
-.userCard svg{
+.userCard svg {
   width: 40px;
   height: 40px;
   color: #fff;
   /* margin:32px 16px; */
   vertical-align: top;
 }
-.userCard > footer.media > a:hover{
+.userCard > footer.media > a:hover {
   background: aqua;
+}
+
+body > main {
+  margin-top: -320px;
+}
+
+body > main .downloadResume {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 21px 50px;
+  display: inline-block;
+  background: #3d3d3d;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  margin: 32px 0px;
+  transition: box-shadow 0.2s;
+}
+body > main .downloadResumeWrapper {
+  text-align: center;
+}
+
+body > main .downloadResume:hover {
+  box-shadow: 0px 4px 13px 0 rgba(0, 0, 0, 0.5);
+}
+.selfIntroduction {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+section.skills,
+section.portfolio {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+section.skills ol {
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.2);
+  padding: 48px 48px 12px 48px;
+}
+section.skills ol li {
+  float: left;
+  width: 48%;
+  box-sizing: border-box;
+}
+section.skills ol li h3 {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+section.skills ol li:nth-child(even) {
+  float: right;
+}
+section.skills .progressBar {
+  height: 5px;
+  background: #b6b6b6;
+  margin: 4px 0px 40px 0px;
+}
+section.skills .progressBar .progress {
+  height: 100%;
+  background: rgb(49, 49, 49);
+  width: 50%;
+  border-radius: 0px 2px 2px 0px;
+}
+section.portfolio {
+  text-align: center;
+  margin-bottom: 64px;
+}
+section.portfolio nav ol {
+  display: inline-block;
+  vertical-align: top;
+}
+section.portfolio nav ol li {
+  float: left;
+  margin: 0px 0px 0px 40px;
+  cursor: pointer;
+}
+section.portfolio nav ol li:first-child {
+  margin: 0px;
+}
+section.portfolio nav {
+  display: inline-block;
+  vertical-align: top;
+}
+section.portfolio nav div.bar {
+  height: 5px;
+  background: #c2c2c2;
+  margin-top: 10px;
+  border-radius: 2.5px;
+}
+
+section.portfolio nav div.barInner {
+  height: 100%;
+  background: #353535;
+  width: 10%;
+  border-radius: 2.5px;
+  transition: all 0.3s;
+}
+section.portfolio nav .bar.state-1 .barInner {
+  margin-left: 0px;
+  width: 20px;
+}
+section.portfolio nav .bar.state-2 .barInner {
+  margin-left: 60px;
+  width: 20px;
+}
+section.portfolio nav .bar.state-3 .barInner {
+  margin-left: 122px;
+  width: 20px;
+}
+section.portfolio .works{
+  position: relative;
+  height: 600px;
+  margin: 24px 0px 24px 0px;
+}
+section.portfolio .works>.big,
+section.portfolio .works>.small{
+  position: absolute;
+}
+section.portfolio .works>.big img{
+  width: 600px;
+  height: 600px;
+  object-fit: cover;
+}
+section.portfolio .works>.small img{
+  width: 300px;
+  height: 290px;
+  object-fit: cover;
 }
