@@ -73,7 +73,7 @@
         <div class="loading"></div>
     </div>
     <!-- 顶部导航 -->
-    <div class="topNavBar">
+    <div id="topNavBar" class="topNavBar">
         <div class="topNavBar-inner clearfix">
             <a class="logo" href="#" alt="Logo">
                 <span class="liang">liang</span><span class="tianzhan">tianzhan</span>
@@ -237,7 +237,18 @@
         </div>
     </section>
     <script>
-        sitewelcome.classList.remove('active')
+        setTimeout(function(){
+        sitewelcome.classList.remove('active')},1000)
+
+        window.onscroll = function(xxxx){
+            if (window.scrollY>0){
+                topNavBar.classList.add('sticky')
+            }
+            else{
+                topNavBar.classList.remove('sticky')
+            }
+            
+        }
     </script>
     <script>
         portfolioUX.onclick = function () {
