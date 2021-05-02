@@ -16,54 +16,64 @@
             fill: currentColor;
             overflow: hidden;
         }
-        .site-welcome{
+
+        .site-welcome {
             display: none;
             position: fixed;
-            top: 0;left: 0;height: 100%;width: 100%;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
             background: #dddddd;
             z-index: 1;
-            justify-content:center;
+            justify-content: center;
             align-items: center;
         }
-        .site-welcome.active{
+
+        .site-welcome.active {
             display: flex;
         }
-        .loading{
-    width:200px;
-    height:200px;
-    position:relative;
-  }
-  .loading::before,.loading::after{
-    content:'';
-    width:10px;
-    height:10px;
-    position:absolute;
-    top:0px;
-    bottom:0px;
-    left:0px;
-    right:0px;
-    background:black;
-    border-radius:50%;
-    margin:auto;
-    animation:s 1.3s linear infinite;
-    
-  }
-  .loading::after{
-    animation-delay:0.65s;
-  }
-  
-  @keyframes s{
-    0%{
-      width:0px;
-      height:0px;
-      opacity:1;
-    }
-    100%{
-      width:40px;
-      height:40px;
-      opacity:0;
-    }
-  }
+
+        .loading {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .loading::before,
+        .loading::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background: black;
+            border-radius: 50%;
+            margin: auto;
+            animation: s 1.3s linear infinite;
+
+        }
+
+        .loading::after {
+            animation-delay: 0.65s;
+        }
+
+        @keyframes s {
+            0% {
+                width: 0px;
+                height: 0px;
+                opacity: 1;
+            }
+
+            100% {
+                width: 40px;
+                height: 40px;
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -78,17 +88,31 @@
             <a class="logo" href="#" alt="Logo">
                 <span class="liang">liang</span><span class="tianzhan">tianzhan</span>
             </a>
-            <nav>
+            <nav class="menu" style="float:right">
                 <ul class="clearfix">
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">SKILLS</a></li>
-                    <li><a href="#">EXPERIENCE</a></li>
-                    <li><a href="#">PRICING</a></li>
-                    <li><a href="#">BLOG</a></li>
-                    <li><a href="#">CALENDAR</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                    <li><a href="#">OTHER</a></li>
-                    <li><a href="#">ALL DEMOS</a></li>
+                    <li><a href="#siteAbout">ABOUT</a></li>
+                    <li>
+                        <a href="#siteSkills">SKILLS</a>
+                        <ul class="submenu">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#siteExperience">EXPERIENCE</a>
+                        <ul class="submenu">
+                            <li>博客1</li>
+                            <li>博客2</li>
+                            <li>博客3</li>
+                        </ul>
+                    </li>
+                    <li><a href="#sitePricing">PRICING</a></li>
+                    <li><a href="#siteBlog">BLOG</a></li>
+                    <li><a href="#siteCalendar">CALENDAR</a></li>
+                    <li><a href="#siteContact">CONTACT</a></li>
+                    <li><a href="#siteOther">OTHER</a></li>
+                    <li><a href="#siteAllDemos">ALL DEMOS</a></li>
                 </ul>
             </nav>
         </div>
@@ -99,7 +123,7 @@
     </div>
     <!-- 信息卡片 -->
     <main>
-        <div class="userCard">
+        <div class="userCard" id="siteAbout">
             <div class="content clearfix">
                 <div class="picture">
                     <img src="./img/avatar.jpg" width="300px" alt="头像">
@@ -153,7 +177,7 @@
         </p>
     </main>
     <!-- 章节1 -->
-    <section class="skills">
+    <section class="skills" id="siteSkills">
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -206,7 +230,7 @@
             </li>
         </ol>
     </section>
-    <section class="portfolio">
+    <section class="portfolio" id="siteExperience" >
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -237,17 +261,40 @@
         </div>
     </section>
     <script>
-        setTimeout(function(){
-        sitewelcome.classList.remove('active')},1000)
+        setTimeout(function () {
+            sitewelcome.classList.remove('active')
+        }, 1000)
 
-        window.onscroll = function(xxxx){
-            if (window.scrollY>0){
+        window.onscroll = function (xxxx) {
+            if (window.scrollY > 0) {
                 topNavBar.classList.add('sticky')
             }
-            else{
+            else {
                 topNavBar.classList.remove('sticky')
             }
-            
+
+        }
+
+        let liTags = document.querySelectorAll('nav.menu > ul >li')
+        for(let i = 0;i<liTags.length;i++){
+            liTags[i].onmouseenter = function(x){
+                x.currentTarget.classList.add('active')
+            }
+            liTags[i].onmouseleave = function(x){
+                x.currentTarget.classList.remove('active')
+            }
+        }
+        let aTags = document.querySelectorAll('nav.menu > ul >li > a')
+        for(let i = 0;i<aTags.length;i++){
+            aTags[i].onclick = function(x){
+                x.preventDefault();
+                let a = x.currentTarget;
+                let href = a.getAttribute('href');//href 为#sitabout
+                let element = document.querySelector(href)
+                let top = element.offsetTop;
+                window.scrollTo(0,top - 100)
+            }
+        
         }
     </script>
     <script>
