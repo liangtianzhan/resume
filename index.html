@@ -34,6 +34,8 @@
             display: flex;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"
+        referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -189,7 +191,7 @@
             </li>
         </ol>
     </section>
-    <section class="portfolio" id="siteExperience" >
+    <section class="portfolio" id="siteExperience">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -219,6 +221,8 @@
             </div>
         </div>
     </section>
+
+
     <script>
         setTimeout(function () {
             sitewelcome.classList.remove('active')
@@ -235,25 +239,57 @@
         }
 
         let liTags = document.querySelectorAll('nav.menu > ul >li')
-        for(let i = 0;i<liTags.length;i++){
-            liTags[i].onmouseenter = function(x){
+        for (let i = 0; i < liTags.length; i++) {
+            liTags[i].onmouseenter = function (x) {
                 x.currentTarget.classList.add('active')
             }
-            liTags[i].onmouseleave = function(x){
+            liTags[i].onmouseleave = function (x) {
                 x.currentTarget.classList.remove('active')
             }
         }
+
+        //
         let aTags = document.querySelectorAll('nav.menu > ul >li > a')
-        for(let i = 0;i<aTags.length;i++){
-            aTags[i].onclick = function(x){
+        function animate(time) {
+            requestAnimationFrame(animate)
+            TWEEN.update(time)
+        }
+        requestAnimationFrame(animate)
+
+        var coords = { x: 0 } // Start at (0, 0)
+        var tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
+            .to({ x: 1000 }, 1000) // Move to (300, 200) in 1 second.
+            .easing(TWEEN.Easing.Quadratic.In) // Use an easing function to make the animation smooth.
+            .onUpdate(function () {
+                console.log(coords.x)
+            })
+            .start() // Start the tween immediately.
+        for (let i = 0; i < aTags.length; i++) {
+            aTags[i].onclick = function (x) {
                 x.preventDefault();
                 let a = x.currentTarget;
                 let href = a.getAttribute('href');//href 为#sitabout
                 let element = document.querySelector(href)
                 let top = element.offsetTop;
-                window.scrollTo(0,top - 100)
+
+
+                let currentTop = window.scrollY //当前离顶部的距离
+                let targetTop = top - 80 //初试位置离顶部的距离
+                let s =  targetTop - currentTop
+                let t = Math.abs((s/100)*300)
+                if (t>500){
+                    t = 500
+                }
+                var coords = { y: currentTop } // Start at (0, 0)
+                var tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
+                    .to({ y: targetTop }, t) // Move to (300, 200) in 1 second.
+                    .easing(TWEEN.Easing.Quadratic.InOut) // Use an easing function to make the animation smooth.
+                    .onUpdate(function () {
+                        window.scrollTo(0,coords.y)
+                    })
+                    .start() // Start the tween immediately.
             }
-        
+
         }
     </script>
     <script>
